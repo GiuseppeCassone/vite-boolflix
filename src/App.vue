@@ -32,6 +32,7 @@
 
 <template>
   <AppNav></AppNav>
+  <AppMain></AppMain>
 </template>
 
 <style lang="scss">

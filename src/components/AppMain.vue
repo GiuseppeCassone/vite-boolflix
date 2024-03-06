@@ -1,5 +1,10 @@
 <script>
-import {store} from '../store.js';
+
+    import AppMovie from './AppMovie.vue';
+
+    import {store} from '../store.js';
+
+
 
     export default {
         name: 'AppMain',
@@ -10,11 +15,17 @@ import {store} from '../store.js';
                 store,
             }
         },
+
+        components: {
+            AppMovie,
+        },
     }
 
 </script>
 
 <template>
+
+    <AppMovie v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
 
 
 </template>
