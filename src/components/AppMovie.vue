@@ -12,7 +12,7 @@
 
 <template>
 
-    <div class="card">
+    <div class="card gap-2">
         <h2>{{ movies.title }}</h2>
         <h3>{{ movies.original_title }}</h3>
         <span>{{ movies.original_language }}</span>
@@ -22,5 +22,11 @@
 </template>
 
 <style lang="scss">
+
+    .card{
+        width: calc(100% / 4);
+        border-radius: 0px;
+
+    }
 
 </style>

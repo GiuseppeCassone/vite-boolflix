@@ -24,12 +24,15 @@
 </script>
 
 <template>
-
-    <AppMovie v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
+    <div class="container d-flex flex-wrap pt-5">
+        <AppMovie v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
+        
+    </div>
 
 
 </template>
 
 <style lang="scss">
+
 
 </style>

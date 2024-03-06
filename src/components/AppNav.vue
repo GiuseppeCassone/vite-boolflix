@@ -14,7 +14,7 @@ import {store} from '../store.js';
 </script>
 
 <template>
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand text-danger fw-bold">Boolflix</a>
                 <div class="d-flex" role="search">
@@ -27,4 +27,7 @@ import {store} from '../store.js';
 
 <style lang="scss">
 
+    .navbar{
+        background-color: #141414;
+    }
 </style>
