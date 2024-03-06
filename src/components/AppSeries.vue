@@ -16,19 +16,15 @@
                 return `https://image.tmdb.org/t/p/w300/${this.series.poster_path}.jpg`;
             },
 
-            convertVotes() {
-                return Math.round(this.series.vote_average / 2);
-            },
-
             generateStars() {
-                const numberOfStars = this.convertVotes();
+                const voteStars = Math.round(this.series.vote_average / 2);
                 const stars = [];
 
-                for (let i = 0; i < numberOfStars; i++) {
+                for (let i = 0; i < voteStars; i++) {
                     stars.push('fa-solid fa-star');
                 }
 
-                for (let i = numberOfStars; i < 5; i++) {
+                for (let i = voteStars; i < 5; i++) {
                     stars.push('fa-regular fa-star');
                 }
 
