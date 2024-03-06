@@ -26,11 +26,16 @@
 </script>
 
 <template>
-    <div class="container d-flex flex-wrap pt-5">
-        <AppMovie class="mb-5" v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
-        
-        <AppSeries v-for="currentSeries in store.tvSeriesList" :series="currentSeries"></AppSeries>
-        
+    <div class="container pt-5">
+        <div class="d-flex flex-wrap mb-5">
+            <h1 class="text-white w-100">Movies</h1>
+            <AppMovie v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
+        </div>
+
+        <div class="d-flex flex-wrap">
+            <h1 class="text-white w-100 ">Series</h1>
+            <AppSeries v-for="currentSeries in store.tvSeriesList" :series="currentSeries"></AppSeries>           
+        </div>       
     </div>
 
 

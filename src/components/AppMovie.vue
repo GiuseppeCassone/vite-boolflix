@@ -10,6 +10,10 @@
         methods: {
             flagLanguage(flag) {
                 return `https://flagcdn.com/16x12/${flag}.png`;
+            },
+
+            posterImg() {
+                return `https://image.tmdb.org/t/p/w342/${this.movies.poster_path}.jpg`;
             }
         }
     }
@@ -19,6 +23,7 @@
 <template>
 
     <div class="card gap-2 text-center">
+        <div><img :src="posterImg()" alt=""></div>
         <h2>{{ movies.title }}</h2>
         <h3>{{ movies.original_title }}</h3>
         <div><img :src="flagLanguage(movies.original_language)" alt=""></div>
