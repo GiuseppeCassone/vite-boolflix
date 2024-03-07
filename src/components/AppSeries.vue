@@ -8,8 +8,30 @@
         },
 
         methods: {
-            flagLanguage(flag) {
-                return `https://flagcdn.com/16x12/${flag}.png`;
+            flagLanguage() {
+                let switchedFlag = this.series.original_language;
+                switch(this.series.original_language){
+
+                    case "en":
+                         switchedFlag = "us";
+                         break;
+                    case "ja":
+                        switchedFlag = "jp";
+                        break;
+                    case "ko":
+                        switchedFlag = "kr";
+                        break;
+                    case "zh":
+                        switchedFlag = "cn";
+                        break;
+                    case "cs":
+                        switchedFlag = "cz";
+                        break;
+                    case "hi":
+                        switchedFlag = "in";
+                        break;
+                };
+                return `https://flagcdn.com/16x12/${switchedFlag}.png`;
             },
 
             posterImg() {
@@ -42,7 +64,7 @@
         <div class="info-box">
             <h2 class="fs-5">{{ series.name }}</h2>
             <h3 class="fs-6">{{ series.original_name }}</h3>
-            <div><img :src="flagLanguage(series.original_language)" alt=""></div>
+            <div><img :src="flagLanguage()" alt=""></div>
             <div class="d-flex justify-content-center"><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
             <p>Trama: {{ series.overview }}</p>
         </div>
