@@ -62,11 +62,11 @@
     <div class="card col-12 col-md-6 col-lg-3 gap-2 text-center">
         <div class="card-img"><img :src="posterImg()" alt=""></div>
         <div class="info-box">
-            <h2 class="fs-5">{{ series.name }}</h2>
-            <h3 class="fs-6">{{ series.original_name }}</h3>
-            <div><img :src="flagLanguage()" alt=""></div>
-            <div class="d-flex justify-content-center"><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
-            <p>Trama: {{ series.overview }}</p>
+            <h2 class="fs-5"><span>Titolo: </span>{{ series.name }}</h2>
+            <h3 class="fs-6"><span>Titolo originale: </span>{{ series.original_name }}</h3>
+            <div><span>Lingua: </span><img :src="flagLanguage()" alt=""></div>
+            <div class="d-flex justify-content-center"><span>Voto: </span><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
+            <p><span>Trama: </span>{{ series.overview }}</p>
         </div>
     </div>
 

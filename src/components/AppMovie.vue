@@ -59,14 +59,14 @@
 
 <template>
 
-    <div class="card col-12 col-md-6 col-lg-3 gap-2 text-center">
+    <div class="card col-12 col-md-6 col-lg-3 gap-2">
         <div class="card-img"><img :src="posterImg()" alt=""></div>
         <div class="info-box">
-            <h2 class="fs-5">Titolo: {{ movies.title }}</h2>
-            <h3 class="fs-6">Titolo originale: {{ movies.original_title }}</h3>
-            <div><img :src="flagLanguage()" alt=""></div>
-            <div class="d-flex justify-content-center">Voto: <i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
-            <p>Trama: {{ movies.overview }}</p>
+            <h2 class="fs-5"><span>Titolo: </span>{{ movies.title }}</h2>
+            <h3 class="fs-6"><span>Titolo originale: </span>{{ movies.original_title }}</h3>
+            <div><span>Lingua: </span><img :src="flagLanguage()" alt=""></div>
+            <div class="d-flex"><span>Voto: </span><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
+            <p><span>Trama: </span>{{ movies.overview }}</p>
         </div>
     </div>
 
@@ -105,6 +105,10 @@
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
 
+            span{
+                color: #FF0011;
+            }
+
             p{
                 font-size: 12px;
             }
@@ -120,7 +124,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
         }
     }
