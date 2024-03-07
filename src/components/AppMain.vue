@@ -1,7 +1,6 @@
 <script>
 
-    import AppMovie from './AppMovie.vue';
-    import AppSeries from './AppSeries.vue';
+    import AppCard from './AppCard.vue';
 
     import {store} from '../store.js';
 
@@ -18,8 +17,7 @@
         },
 
         components: {
-            AppMovie,
-            AppSeries,
+            AppCard,
         },
     }
 
@@ -29,12 +27,12 @@
     <div class="container pt-5">
         <div class="d-flex flex-wrap mb-5">
             <h1 class="text-white w-100">Movies</h1>
-            <AppMovie v-for="currentMovie in store.filmList" :movies="currentMovie"></AppMovie>
+            <AppCard v-for="currentMovie in store.filmList" :infos="currentMovie" :cast="store.filmCastList[currentMovie.id]"></AppCard>
         </div>
 
         <div class="d-flex flex-wrap">
             <h1 class="text-white w-100 ">Series</h1>
-            <AppSeries v-for="currentSeries in store.tvSeriesList" :series="currentSeries"></AppSeries>           
+            <AppCard v-for="currentSeries in store.tvSeriesList" :infos="currentSeries" :cast="store.tvSeriesCastList[currentSeries.id]"></AppCard>           
         </div>       
     </div>
 

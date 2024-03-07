@@ -1,16 +1,17 @@
 <script>
 
     export default {
-        name: 'AppMovie',
+        name: 'AppCard',
 
         props: {
-            movies: Object,
+            infos: Object,
+            cast: Array,
         },
 
         methods: {
             flagLanguage() {
-                let switchedFlag = this.movies.original_language;
-                switch(this.movies.original_language){
+                let switchedFlag = this.infos.original_language;
+                switch(this.infos.original_language){
 
                     case "en":
                          switchedFlag = "us";
@@ -35,11 +36,11 @@
             },
 
             posterImg() {
-                return `https://image.tmdb.org/t/p/w342/${this.movies.poster_path}.jpg`;
+                return `https://image.tmdb.org/t/p/w342/${this.infos.poster_path}.jpg`;
             },
 
             generateStars() {
-                const voteStars = Math.round(this.movies.vote_average / 2);
+                const voteStars = Math.round(this.infos.vote_average / 2);
                 const stars = [];
 
                 for (let i = 0; i < voteStars; i++) {
@@ -52,6 +53,22 @@
 
                 return stars;
             },
+
+            getCastNames() {
+                if (this.cast && this.cast.length) {
+                    let castNames = '';
+                    const maxMemberCast = 5;
+                    for (let i = 0; i < Math.min(this.cast.length, maxMemberCast); i++) {
+                    castNames += this.cast[i].name;
+                    if (i < Math.min(this.cast.length, maxMemberCast) - 1) {
+                        castNames += ', ';
+                    }
+                    }
+                    return castNames;
+                } else {
+                    return '';
+                }
+            }
         }
     }
 
@@ -62,11 +79,12 @@
     <div class="card col-12 col-md-6 col-lg-3 gap-2">
         <div class="card-img"><img :src="posterImg()" alt=""></div>
         <div class="info-box">
-            <h2 class="fs-5"><span>Titolo: </span>{{ movies.title }}</h2>
-            <h3 class="fs-6"><span>Titolo originale: </span>{{ movies.original_title }}</h3>
+            <h2 class="fs-5"><span>Titolo: </span>{{ infos.title ? infos.title : infos.name }}</h2>
+            <h3 class="fs-6"><span>Titolo originale: </span>{{ infos.original_title ? infos.original_title : infos.original_name }}</h3>
             <div><span>Lingua: </span><img :src="flagLanguage()" alt=""></div>
             <div class="d-flex"><span>Voto: </span><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
-            <p><span>Trama: </span>{{ movies.overview }}</p>
+            <p><span>Trama: </span>{{ infos.overview }}</p>
+            <p v-if="cast && cast.length"><span>Cast: </span>{{ getCastNames() }}</p>
         </div>
     </div>
 
