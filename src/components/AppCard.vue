@@ -83,7 +83,7 @@
             <h3 class="fs-6"><span>Titolo originale: </span>{{ infos.original_title ? infos.original_title : infos.original_name }}</h3>
             <div><span>Lingua: </span><img :src="flagLanguage()" alt=""></div>
             <div class="d-flex"><span>Voto: </span><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
-            <p><span>Trama: </span>{{ infos.overview }}</p>
+            <p v-if="infos.overview.length > 0"><span>Trama: </span>{{ infos.overview }}</p>
             <p v-if="cast && cast.length"><span>Cast: </span>{{ getCastNames() }}</p>
         </div>
     </div>

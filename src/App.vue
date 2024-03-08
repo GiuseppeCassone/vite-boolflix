@@ -39,29 +39,12 @@
               // console.log(res.data.results)
               this.getCastMembers();
               
-              
-              // // this.store.filmList.forEach(movie => {
-                //   axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=39cad4f2c9bf7824ade8563d23362a6f`)
-                //     .then(res => {
-                  //       this.store.filmGenres = res.data.results[genres_ids];
-                  //       console.log(res.data.results[genres_ids])
-                  //     })  
-                  //   // });
-                  
-                  
-                });
+            });
                 
             axios.get('https://api.themoviedb.org/3/search/tv?api_key=39cad4f2c9bf7824ade8563d23362a6f&query=' + this.store.searchText).then(res => {
               this.store.tvSeriesList = res.data.results; 
               // console.log(res.data.results)
               this.getCastMembers();
-
-              // this.store.tvSeriesList.forEach(series => {
-              //   axios.get(`https://api.themoviedb.org/3/tv/${series.id}/credits?api_key=39cad4f2c9bf7824ade8563d23362a6f`)
-              //     .then(res => {
-              //       this.store.tvSeriesCastList[series.id] = res.data.cast;
-              //     })  
-              //   });
               
             });
           },
@@ -80,6 +63,10 @@
                     this.store.tvSeriesCastList[series.id] = res.data.cast;
                   })  
               });
+          },
+
+          getGenres() {
+            
           }
       }
 
