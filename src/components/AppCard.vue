@@ -6,6 +6,7 @@
         props: {
             infos: Object,
             cast: Array,
+            genres: Object,
         },
 
         methods: {
@@ -68,7 +69,20 @@
                 } else {
                     return '';
                 }
+            },
+
+            getGenresName() {
+                if (this.infos.genre_ids && this.genres.length > 0) {
+                        const genreNames = this.infos.genre_ids.map(genreId => {
+                            const genre = this.genres.find(genre => genre.id === genreId);
+                            return genre ? genre.name : '';
+                        });
+                        return genreNames.join(', ');
+                    } else {
+                        return '';
+                    }
             }
+
         }
 }
 
@@ -85,6 +99,7 @@
             <div class="d-flex"><span>Voto: </span><i v-for="star in generateStars()" :class="star" class="text-warning ps-2"></i></div>
             <p v-if="infos.overview.length > 0"><span>Trama: </span>{{ infos.overview }}</p>
             <p v-if="cast && cast.length"><span>Cast: </span>{{ getCastNames() }}</p>
+            <p v-if="getGenresName()"><span>Generi: </span>{{ getGenresName() }}</p>
         </div>
     </div>
 
@@ -97,6 +112,7 @@
         // width: calc(100% / 4);
         height: 450px;
         border-radius: 0px;
+
 
         .card-img {
             width: 100%;
@@ -117,7 +133,7 @@
 
             width: 100%;
             height: 100%;
-            padding: 20px;
+            padding: 30px;
             display: none;
 
             background-color: rgba(0, 0, 0, 0.6);
@@ -144,6 +160,7 @@
             justify-content: center;
             align-items: flex-start;
             gap: 8px;
+            overflow-y: auto;
         }
     }
 

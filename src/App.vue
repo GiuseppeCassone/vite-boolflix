@@ -23,6 +23,7 @@
           axios.get('https://api.themoviedb.org/3/movie/popular?api_key=39cad4f2c9bf7824ade8563d23362a6f').then(res => {
             this.store.filmList = res.data.results;
             this.getCastMembers();
+            this.getGenres();
           });
 
           axios.get('https://api.themoviedb.org/3/tv/popular?api_key=39cad4f2c9bf7824ade8563d23362a6f').then(res => {
@@ -38,7 +39,7 @@
               this.store.filmList = res.data.results; 
               // console.log(res.data.results)
               this.getCastMembers();
-              
+              this.getGenres();
             });
                 
             axios.get('https://api.themoviedb.org/3/search/tv?api_key=39cad4f2c9bf7824ade8563d23362a6f&query=' + this.store.searchText).then(res => {
@@ -66,7 +67,16 @@
           },
 
           getGenres() {
-            
+              axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=39cad4f2c9bf7824ade8563d23362a6f').then(res => {
+                this.store.filmGenres = res.data.genres;
+                
+              });
+              
+              axios.get('https://api.themoviedb.org/3/genre/tv/list?api_key=39cad4f2c9bf7824ade8563d23362a6f').then(res => {
+                this.store.tvSeriesGenres = res.data.genres;
+                
+              });
+
           }
       }
 
