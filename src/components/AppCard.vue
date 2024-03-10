@@ -133,7 +133,7 @@
 
             width: 100%;
             height: 100%;
-            padding: 30px;
+            padding: 20px;
             display: none;
 
             background-color: rgba(0, 0, 0, 0.6);

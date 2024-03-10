@@ -29,6 +29,7 @@
           axios.get('https://api.themoviedb.org/3/tv/popular?api_key=39cad4f2c9bf7824ade8563d23362a6f').then(res => {
             this.store.tvSeriesList = res.data.results;
             this.getCastMembers();
+            this.getGenres();
           });
       },
 
@@ -46,6 +47,7 @@
               this.store.tvSeriesList = res.data.results; 
               // console.log(res.data.results)
               this.getCastMembers();
+              this.getGenres();
               
             });
           },
